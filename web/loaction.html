@@ -1,0 +1,136 @@
+
+<html>
+    <head>
+            <link rel="icon" href=".\bus-solid.svg" type="image/x-icon">
+
+        <title>BOOK ME</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .first{
+                text-align: center;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                 }
+            .container{
+                padding:10px;
+                 background:linear-gradient(to bottom,rgb(248,35,35),rgb(243,100,100));
+                height: 420px;
+                width: 360px;
+                border-radius: 10px;
+                text-align:center;            
+            }              
+              h2{                 
+                  color:whitesmoke;
+                  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;                    
+              }
+              h5{                 
+                  margin-top:23px;
+                  margin-left:5px;              
+                  font-family: calibri;
+                  position: absolute;
+              }
+              select{
+                  width:250px;
+                  height:30px;
+                  padding: 5px;
+                  margin-left: 50px;
+                  border-radius:5px;
+              }
+              #o{
+                   width:250px;
+                  height:30px;
+                  padding: 5px;
+                  border-radius:5px;
+                  margin-left: 50px;
+              }
+              
+              #s{
+                  margin-top:60px;
+                  border: none;
+                  padding: 15px;
+                  color: #071a52;
+                  background:white;
+                  border-radius: 5px;
+                  width: 100px;
+                  font-weight: 600;
+                  cursor: pointer;
+            
+              }
+              img{
+                  width:50px;
+                  height: 50px;
+                  filter:invert(100%);
+                  margin-bottom:-8px;
+              }
+        </style>
+    </head>
+    <body>
+        <div class="first">
+            <form name="myform" action="bill" method="POST" onsubmit="return validate()">
+            <div class="container">
+              
+            <img src=".\bus-solid.svg" alt="filter applied">
+            <h2>LOCATION PLSE</h2>
+            <div>               
+              <h5>FROM :</h5>  
+              <br>              
+            <select name="start" required >
+                <option value="" disabled selected hidden>SELECT YOUR LOCATION</option>
+                <option value="Bengaluru">Bengaluru</option>
+                <option value="Mangaluru">Mangaluru</option>
+                <option value="Mysuru">Mysuru</option>
+                <option value="Hubli">Hubli</option>                
+                <option value="Hassan">Hassan</option>             
+            </select>           
+            </div>
+            <div>
+                <h5>TO:</h5>
+                <br>
+            <select name="end"  required>
+                    <option value="" disabled selected hidden>SELECT YOUR DESTINATION</option>
+                <option value="Bengaluru">Bengaluru</option>
+                <option value="Mangaluru">Mangaluru</option>
+                <option value="Mysuru">Mysuru</option>
+                <option value="Hubli">Hubli</option>                
+                <option value="Hassan">Hassan</option>
+            </select>
+            </div>
+            <div>
+                <h5>YOUR DATE: </h5>
+                <br>
+                <input type="date" id="o" name="da" value="" />
+            </div>
+            <div>                
+                <input type="submit" id="s" value="SUBMIT"/>
+                <input type="reset" id="s" value="RESET" />
+            </div>
+        </form>
+            </div>
+        </div>
+        
+        <script>
+            function validate(){
+                var start=document.myform.start.value;
+                 var end=document.myform.end.value;
+                 var date=document.myform.da.value;
+                 
+                 var inputDate= new Date(date);
+                 var currentDate = new Date();
+                 
+                 if(start===end){
+                     alert("Destination is same as Location");
+                     return false;
+                 }
+                 
+                 if(inputDate < currentDate){
+                     alert("INSERT UPCOMING DATES");
+                     return false;
+                 }               
+            }
+        </script>
+    </body>
+</html>
+  

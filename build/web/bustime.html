@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>BUS TIME</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href=".\bus-solid.svg" type="image/x-icon">
+        <style>
+          
+            body{
+                background-color: aliceblue;
+            }
+            h4{
+                background-color: red;
+                color:white;
+               padding: 15px;
+               font-size: large;
+
+                font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;       
+            }
+            h5{
+               
+                font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ; 
+                margin-top:-70px;
+                margin-left:1400px;
+                padding:12px;
+                height: 22px;
+                border-radius: 2px;
+                background-color: rgb(129, 6, 252);
+            }
+            button{
+               
+                 
+                  color: #071a52;
+                  background-color:white;
+                  border-radius: 10px;
+                  width: 100px;
+                  height: 50px;
+                  font-weight: 600;
+                  cursor: pointer;
+            }
+            button:hover{
+                color: rgb(129, 6, 252);
+                border-color: rgb(129, 6, 252);
+            }
+            
+          
+            #bus{
+                width: 30px;
+                margin-top:-30px;
+            }
+           
+            
+        </style>
+    </head>
+    <body>
+       <form method=POST name=myform action="bill" onsubmit="return validate()">
+           <h4><input type="radio" id="bus" name=bus value="MK TRAVELS"/>MK TRAVELS</h4>
+
+       <h5>Rs.980</h5>
+      
+       <button name="time" value="10:00am">10:00am</button>
+        <button name="time" value="11:00am">11:00am</button>
+        <button name="time" value="1:00pm">1:00pm</button>
+        <button name="time" value="3:00pm">3:00pm</button>
+        <button name="time" value="5:00pm">5:00pm</button>
+
+    
+        <h4><input type="radio" id="bus" name=bus value="MAHESH-TRAVELS"/>MAHESH TRAVELS</h4>
+       <h5>Rs.990</h5>
+       
+        <button name="time" value="9:00am">9:00am</button>
+        <button name="time" value="10:30am">10:30am</button>
+        <button name="time" value="12:30pm">12:30pm</button>
+        <button name="time" value="2:00pm">2:00pm</button>
+        <button  name="time" value="4:00pm">4:00pm</button>
+   
+
+        <h4><input type="radio" id="bus" name=bus value="P.T.C TRAVELS"/>P.T.C TRAVELS</h4>
+        <h5>Rs.1200</h5>
+        
+            <button name="time" value="1:00pm">1:00pm</button>
+            <button name="time" value="4:00pm">4:00pm</button>
+            <button name="time" value="8:00pm">8:00pm</button>
+            <button  name="time" value="10:00pm">10:00pm</button>
+            <button  name="time" value="11:30pm">11:30pm</button>
+       
+        <h4><input type="radio" id="bus"  name=bus value="USHA TRAVELS"/>USHA TRAVELS</h4>
+       <h5>Rs.1000</h5>
+      
+        <button  name="time" value="11:00am">11:00am</button>
+        <button name="time" value="12:30pm">12:30pm</button>
+        <button name="time" value="1:30pm">1:30pm</button>
+        <button name="time" value="10:00am">3:45pm</button>
+        <button  name="time" value="6:00pm">6:00pm</button>
+        <h4><input type="radio" id="bus" name=bus value="SUN TRAVELS"/>SUN TRAVELS</h4>
+        <h5>Rs.990</h5>
+       
+            <button name="time" value="8:30am">8:30am</button>
+            <button name="time" value="12:00pm">12:00pm</button>
+            <button name="time" value="5:00pm">5:00pm</button>
+            <button name="time" value="7:00pm">7:00pm</button>
+            <button name="time" value="9:00pm">9:00pm</button>
+            
+        </form>
+      <script>
+          function validate(){
+         var bus=document.myform.bus.value;
+          if(bus===""){
+              alert("PLEASE SELECT YOUR BUS");
+            return false;
+          }
+        
+          };
+          </script>
+      
+       
+      
+    </body>
+</html>

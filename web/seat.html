@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<link rel="icon" href=".\bus-solid.svg" type="image/x-icon">
+<title>BUS SEAT BOOKING</title>
+
+<style>
+    * {
+    box-sizing: border-box;
+    }
+    body {
+    background-color: #d1d0e0;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+    }
+    .movie-container {
+    margin: 20px 0;
+    }
+    .movie-container select {
+    background-color: #fff;
+    border: 0;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-left: 50px;
+    padding: 5px 15px 5px 15px;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    }
+    .container {
+    perspective: 1000px;
+    margin-bottom: 30px;
+    }
+    .seat {
+    background-color: #676779;
+    height: 50px;
+    width: 50px;
+    margin: 3px;
+    border-radius: 10px;
+    }
+    .seat.selected {
+    background-color: #ec0c0c;
+    }
+    .seat.occupied {
+    background-color: #fff;
+    }
+    .seat:nth-of-type(2) {
+    margin-left:5px;
+    }
+    .seat:nth-last-of-type(2) {
+    margin-left: 50px;
+    }
+    .seat:not(.occupied):hover {
+    cursor: pointer;
+    transform: scale(1.2);
+    }
+    .showcase .seat:not(.occupied):hover {
+    cursor: default;
+    transform: scale(1);
+    }
+    .showcase {
+    background: rgba(0, 0, 0, 0.1);
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: rgb(95, 79, 79);
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    }
+    .showcase li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px;
+    }
+    .showcase li small {
+    margin-left: 0px;
+    }
+    .row {
+    display: flex;
+    }
+    p.text {
+    margin: 5px 0;
+    }
+    p.text span {
+    color: #7316ee;
+    }
+    #ds{
+         color: #071a52;
+                  background-color:white;
+                  border-radius: 10px;
+                  width: 100px;
+                  height: 50px;
+                  font-weight: 600;
+                  cursor: pointer;
+                  margin-top: 60px;
+                  margin-left:150px;
+    }
+    #ds:hover{
+        background-color: red;
+        color:white;
+    }
+    h6{
+        color:black;
+        margin-bottom: 0px;
+    }
+    
+    </style>
+</head>
+<body>
+    <form action="bill" method="POST">
+   
+<ul class="showcase">
+<li>
+<div class="seat"></div>
+<small>N/A</small>
+</li>
+<li>
+<div class="seat selected"></div>
+<small>Selected</small>
+</li>
+<li>
+<div class="seat occupied"></div>
+<small>Occupied</small>
+</li>
+</ul>
+<div class="container">
+
+
+<div class="row">
+    <h6> A :</h6>
+<div  class="seat"></div>
+<div class="seat"></div>
+<div class="seat"></div>
+<div class="seat"></div>
+</div>
+<div class="row">
+   <h6> B :</h6>
+<div class="seat"></div>
+<div class="seat"></div>
+<div class="seat occupied"></div>
+<div class="seat occupied"></div>
+</div>
+   
+<div class="row">
+    <h6> C :</h6>
+<div class="seat"></div>
+<div class="seat"></div>
+<div class="seat"></div>
+<div class="seat"></div>
+</div>
+    
+<div class="row">
+    <h6> D :</h6>
+<div class="seat"></div>
+<div class="seat"></div>
+<div class="seat"></div>
+<div class="seat"></div>
+</div>
+<div class="row">
+    <h6> E :</h6>
+<div class="seat"></div>
+<div class="seat"></div>
+<div class="seat occupied"></div>
+<div class="seat"></div>
+</div>
+</div>
+<p class="text">
+    You have selected <span id="count">0</span> seat/s</p>
+<div>
+    <h5>ENTER SEAT NO'S:<input type="text" class="sl" name="seat" required></h5>
+</div>
+<div>
+    <input type="submit" id="ds" value="CONFIRM" />
+</div>
+ </form> 
+    <script>
+        const container = document.querySelector('.container');
+const seats = document.querySelectorAll('.row .seat:not(.occupied)');
+const count = document.getElementById('count');
+const total = document.getElementById('total');
+
+populateUI();
+let ticketPrice = +80;
+// Save selected movie index and price
+function setMovieData(movieIndex, moviePrice) {
+localStorage.setItem('selectedMovieIndex', movieIndex);
+localStorage.setItem('selectedMoviePrice', moviePrice);
+}
+// Update total and count
+function updateSelectedCount() {
+const selectedSeats = document.querySelectorAll('.row .seat.selected');
+const seatsIndex = [...selectedSeats].map(seat => [...seats].indexOf(seat));
+localStorage.setItem('selectedSeats', JSON.stringify(seatsIndex));
+const selectedSeatsCount = selectedSeats.length;
+count.innerText = selectedSeatsCount;
+total.innerText = selectedSeatsCount * ticketPrice;
+
+}
+// Get data from localstorage and populate UI
+function populateUI() {
+const selectedSeats = JSON.parse(localStorage.getItem('selectedSeats'));
+if (selectedSeats !== null && selectedSeats.length > 0) {
+seats.forEach((seat, index) => {
+if (selectedSeats.indexOf(index) > -1) {
+seat.classList.add('selected');
+}
+});
+}
+const selectedMovieIndex = localStorage.getItem('selectedMovieIndex');
+
+}
+
+container.addEventListener('click', e => {
+if (
+e.target.classList.contains('seat') && !e.target.classList.contains('occupied')) {
+e.target.classList.toggle('selected');
+updateSelectedCount();
+}
+});
+// Initial count and total set
+updateSelectedCount();
+        </script>
+        
+</body>
+</html>

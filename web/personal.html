@@ -1,0 +1,74 @@
+
+<html>
+    <head>
+        <title>YOUR CONTACT</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href=".\bus-solid.svg" type="image/x-icon">
+        <style>
+            .one{
+                 text-align: center;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+            .second{
+                 padding:10px;
+                 background:linear-gradient(to bottom,rgb(248,35,35),rgb(243,100,100));
+                height: 300px;
+                width: 400px;
+                border-radius: 10px;
+                align:center;  
+            }
+            h4{ margin-top:23px;
+                  margin-left:5px;              
+                  font-family: calibri;
+                  position: absolute;
+            }
+            
+            .f{width:250px;
+                  height:20px;
+                  padding: 5px;
+                  margin-left: 130px;
+                  border-radius:5px;
+            }
+            h3{
+                font-family: calibri;
+                color:white;
+            }
+            #s{ margin-top:60px;
+                  border: none;
+                  padding: 15px;
+                  color: #071a52;
+                  background:white;
+                  border-radius: 5px;
+                  width: 150px;
+                  font-weight: 600;
+                  cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="one">
+        <form action="bill1.html" method="POST">
+            
+            <div class="second">
+                <h3>YOUR CONTACT</h3>
+                <h4> Name:</h4>
+                <br>
+            <input type="text"  class="f" name="name" value="" required/>
+            
+            <div>
+                <h4>Phone Number:</h4>
+                <br>
+            <input type="tel" class="f" name="pone" required/>
+            </div>
+            <div>
+                <input type="submit"   id="s" value="GENERATE BILL" />
+            </div>
+        </div>
+        </form>
+        </div>
+    </body>
+</html>
